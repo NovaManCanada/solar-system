@@ -32,7 +32,14 @@ jobs:
           uses: actions/setup-node@v3
           with:
             node-version: ${{ matrix.nodejs_version }}
-    
+
+        - name: Init Caching
+          uses: actions/cache@v4
+          id: npm-cache # use this to check for `cache-hit` ==> if: steps.npm-cache.outputs.cache-hit != 'true'
+          with:
+              path: node_modules
+              key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}       
+
         - name: Install Dependencies
           run: npm install
     
@@ -60,7 +67,13 @@ jobs:
           uses: actions/setup-node@v3
           with:
             node-version: 18
-    
+
+        - name: Init Caching
+          uses: actions/cache@v4
+          id: npm-cache # use this to check for `cache-hit` ==> if: steps.npm-cache.outputs.cache-hit != 'true'
+          with:
+              path: node_modules
+              key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}            
         - name: Install Dependencies
           run: npm install
     
