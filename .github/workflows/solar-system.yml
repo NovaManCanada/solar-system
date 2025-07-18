@@ -48,13 +48,6 @@ jobs:
     code-coverage:
 
         name: Code Coverage
-        strategy:
-          matrix:
-            os: [ubuntu-latest, macos-latest]
-            nodejs_version: [18,19,20]
-            exclude:
-            - nodejs_version: 18
-              os: macos-latest
 
         runs-on: ubuntu-latest
         steps:
