@@ -118,7 +118,7 @@ jobs:
               -e MANGO_URI=$MANGO_URI \
               -e MANGO_USERNAME=$MANGO_USERNAMME \ 
               -e MANGO_PASSWORD=$MANGO_PASSWORD \
-              ${{ vars.DOCKERHUB_USERNAME }}/solar-system:${{ github.sha }}
+              trackercanada/solar-system:${{ github.sha }}
 
             export IP=(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' solar-system-app)
             echo $IP
