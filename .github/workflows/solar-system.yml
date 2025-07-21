@@ -129,7 +129,7 @@ jobs:
             echo Testing Image URI using wget
             wget -q -O - 127.0.0.1:3000/live | grep live
 
-        - name: set lower case owner name
+        - name: Set lowercase GitHub Repository Owner Name
           run: |
             echo "OWNER_LC=${OWNER,,}" >>${GITHUB_ENV}
           env:
