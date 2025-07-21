@@ -100,7 +100,7 @@ jobs:
         - name:  DockerHub Login
           uses: docker/login-action@v3
           with:
-            username: trackercanada
+            username: ${{ vars.DOCKERHUB_USERNAME }}
             password: ${{ secrets.DOCKERHUB_TOKEN }} 
             
         - name: Build and push
@@ -108,7 +108,7 @@ jobs:
           with:
             context: .
             push: false
-            tags: trackercanada/solar-system:${{ github.sha }}
+            tags: ${{ vars.DOCKERHUB_USERNAME }}/solar-system:${{ github.sha }}
             
         - name: Docker Image Test
           run: |
@@ -118,7 +118,7 @@ jobs:
               -e MANGO_URI=$MANGO_URI \
               -e MANGO_USERNAME=$MANGO_USERNAMME \ 
               -e MANGO_PASSWORD=$MANGO_PASSWORD \
-              trackercanada/solar-system:${{ github.sha }}
+              ${{ vars.DOCKERHUB_USERNAME }}/solar-system:${{ github.sha }}
 
             export IP=(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' solar-system-app)
             echo $IP
