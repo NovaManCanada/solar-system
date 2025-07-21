@@ -114,7 +114,7 @@ jobs:
           run: |
             docker images
             docker run --name solar-system-app -d \
-              - p 3000:3000 \
+              -p 3000:3000 \
               -e MANGO_URI=$MANGO_URI \
               -e MANGO_USERNAME=$MANGO_USERNAMME \ 
               -e MANGO_PASSWORD=$MANGO_PASSWORD \
