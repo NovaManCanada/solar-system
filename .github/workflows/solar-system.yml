@@ -116,6 +116,9 @@ jobs:
         needs: [unit-testing, code-coverage]
         runs-on: ubuntu-latest
         steps:
+        - name: Exit
+          run: exit 1
+        
         - name: Checkout Repository
           uses: actions/checkout@v4
 
@@ -180,3 +183,4 @@ jobs:
             kubectl version
             echo ======================================
             kubectl get nodes
+
